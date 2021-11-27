@@ -1,0 +1,2 @@
+import { Property } from 'csstype';
+export declare const alignContentProperty: (alignContent: Property.AlignContent | undefined, contentStart: boolean | undefined, contentEnd: boolean | undefined, contentCenter: boolean | undefined, contentStretch: boolean | undefined, contentSpaceBetween: boolean | undefined, contentSpaceAround: boolean | undefined, defaultValue: Property.AlignContent) => Property.AlignContent;
