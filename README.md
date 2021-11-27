@@ -40,8 +40,8 @@ You don't know CSS Flexbox? Read [here](https://developer.mozilla.org/en-US/docs
 
 3 ways to set properties:
 - flags (`row`, `start`, `stretch`, ecc...)
-- short version (`justify`, `align`, `self`, ecc...)
-- classic (`displayProperty`, `flexDirectionProperty`, `justifyContentProperty`, ecc...)
+- classic properties (`displayProperty`, `flexDirectionProperty`, `justifyContentProperty`, ecc...)
+- short version of classic properties (`justify`, `align`, `self`, ecc...)
 
 ## Install
 
@@ -54,7 +54,7 @@ yarn add react-flex-element
 
 ## Usage
 
-Every Flexbox properties can be set via one or more dedicated props.
+Every Flexbox property can be set via one or more dedicated props.
 
 ### Flexible "container" props
 
@@ -72,7 +72,7 @@ For this reason they are only available for the component `Flex`.
 ```jsx
 <Flex /> // flex
 <Flex inline /> // inline-flex
-<Flex displayProperty="inline-flex"/> // inline-flex
+<Flex display="inline-flex"/> // inline-flex
 ```
 
 #### flex-direction
@@ -94,7 +94,7 @@ For this reason they are only available for the component `Flex`.
 <Flex columnReverse /> // column-reverse
 
 <Flex direction="column-reverse" /> // column-reverse
-<Flex flexDirectionProperty="column-reverse" /> // column-reverse
+<Flex flexDirection="column-reverse" /> // column-reverse
 ```
 
 The additional `reverse` prop can be used to programmatically revert the specified direction:
@@ -116,7 +116,7 @@ The additional `reverse` prop can be used to programmatically revert the specifi
 | `nowrap` | `boolean` | `nowrap` (default) |
 | `wrap` | `boolean` | `wrap` |
 | `wrapReverse` | `boolean` | `wrap-reverse` |
-| `wrap`, `flexWrapProperty` | `string` | any |
+| `wrap`, `flexWrap` | `string` | any |
 
 ```jsx
 <Flex wrap /> // wrap
@@ -127,7 +127,7 @@ The additional `reverse` prop can be used to programmatically revert the specifi
 <Flex wrap={false} /> // nowrap
 
 <Flex wrap="wrap-reverse" /> // wrap-reverse
-<Flex flexWrapProperty="wrap-reverse" /> // wrap-reverse
+<Flex flexWrap="wrap-reverse" /> // wrap-reverse
 ```
 
 #### justify-content
@@ -140,7 +140,7 @@ The additional `reverse` prop can be used to programmatically revert the specifi
 | `spaceBetween` | `boolean` | `space-between` |
 | `spaceAround` | `boolean` | `space-around` |
 | `spaceEvenly` | `boolean` | `space-evenly` |
-| `justify`, `justifyContentProperty` | `string` | any |
+| `justify`, `justifyContent` | `string` | any |
 
 ```jsx
 <Flex start /> // flex-start
@@ -151,7 +151,7 @@ The additional `reverse` prop can be used to programmatically revert the specifi
 <Flex spaceEvenly /> // space-evenly
 
 <Flex justify="space-beetween" /> // space-beetween
-<Flex justifyContentProperty="space-beetween" /> // space-beetween
+<Flex justifyContent="space-beetween" /> // space-beetween
 ```
 
 #### align-items
@@ -163,7 +163,7 @@ The additional `reverse` prop can be used to programmatically revert the specifi
 | `alignCenter` | `boolean` | `center` (default) |
 | `stretch`, `alignStretch` | `boolean` | `stretch` |
 | `baseline`, `alignBaseline` | `boolean` | `baseline` |
-| `align`, `alignItemsProperty` | `string` | any |
+| `align`, `alignItems` | `string` | any |
 
 ```jsx
 <Flex alignStart /> // flex-start
@@ -173,7 +173,7 @@ The additional `reverse` prop can be used to programmatically revert the specifi
 <Flex alignBaseline /> // baseline
 
 <Flex align="flex-end" /> // flex-end
-<Flex alignItemsProperty="flex-end" /> // flex-end
+<Flex alignItems="flex-end" /> // flex-end
 ```
 
 #### align-content
@@ -185,7 +185,7 @@ The additional `reverse` prop can be used to programmatically revert the specifi
 | `contentCenter` | `boolean` | `center` |
 | `contentStretch` | `boolean` | `stretch` |
 | `contentBaseline` | `boolean` | `baseline` |
-| `alignContentProperty` | `string` | any |
+| `alignContent` | `string` | any |
 
 ```jsx
 <Flex contentStart /> // flex-start
@@ -195,7 +195,7 @@ The additional `reverse` prop can be used to programmatically revert the specifi
 <Flex contentSpaceBetween /> // space-between
 <Flex contentSpaceAround /> // space-around
 
-<Flex alignContentProperty="flex-end" /> // flex-end
+<Flex alignContent="flex-end" /> // flex-end
 ```
 
 #### row-gap
@@ -241,15 +241,15 @@ The additional `reverse` prop can be used to programmatically revert the specifi
 The set of props below refers to "flex items" related properties.
 They are all available for both `Flex` and `FlexItem` components.
 
-#### orderProperty
+#### order
 
 | props | type | value |
 | --- | --- | --- |
-| `orderProperty` | `number`, `string` | any |
+| `order` | `number`, `string` | any |
 
 ```jsx
-<Flex orderProperty={3} /> // 3
-<Flex orderProperty="3" /> // 3
+<Flex order={3} /> // 3
+<Flex order="3" /> // 3
 ```
 
 #### flex-grow
@@ -306,7 +306,7 @@ They are all available for both `Flex` and `FlexItem` components.
 | `selfCenter` | `boolean` | `center` |
 | `selfStretch` | `boolean` | `stretch` |
 | `selfBaseline` | `boolean` | `baseline` |
-| `self`, `alignSelfProperty` | `string` | / |
+| `self`, `alignSelf` | `string` | / |
 
 ```jsx
 <Flex selfStart /> // flex-start
@@ -316,7 +316,7 @@ They are all available for both `Flex` and `FlexItem` components.
 <Flex selfBaseline /> // baseline
 
 <Flex self="flex-end" /> // flex-end
-<Flex alignSelfProperty="flex-end" /> // flex-end
+<Flex alignSelf="flex-end" /> // flex-end
 ```
 
 ### Other props
@@ -334,6 +334,9 @@ Changes the rendered element.
 
 ```jsx
 <Flex as="input" />
+```
+
+```jsx
 <Flex as={MyCustomComp} />
 ```
 
@@ -382,7 +385,7 @@ Use it to create a flexible container.
 
 By default, it renders a `div` element with the following CSS properties set:
 ```css
-displayProperty: flex;
+display: flex;
 align-items: center;
 ```
 
@@ -399,5 +402,5 @@ Use it to create a flexible item.
 
 By default, it renders a `div` element, but it does not set any CSS property.
 
-Lastly, it provides only props related to `orderProperty`, `flex-grow`, `flex-shrink`,
+Lastly, it provides only props related to `order`, `flex-grow`, `flex-shrink`,
 `flex-basis` and `align-self` properties.
