@@ -313,14 +313,16 @@ components.
 | `self`, `alignSelf` | `string` | / |
 
 ```jsx
-<Flex selfStart /> // flex-start
-<Flex selfEnd /> // flex-end
-<Flex selfCenter /> // center
-<Flex selfStretch /> // stretch
-<Flex selfBaseline /> // baseline
-
-<Flex self="flex-end" /> // flex-end
-<Flex alignSelf="flex-end" /> // flex-end
+<>
+  <Flex selfStart /> // flex-start
+  <Flex selfEnd /> // flex-end
+  <Flex selfCenter /> // center
+  <Flex selfStretch /> // stretch
+  <Flex selfBaseline /> // baseline
+  
+  <Flex self="flex-end" /> // flex-end
+  <Flex alignSelf="flex-end" /> // flex-end
+<>
 ```
 
 ### Other props
@@ -345,15 +347,16 @@ Examples:
 
 In addition, any additional prop passed to `Flex` or `FlexItem` will be drilled down to the render element or component.
 
-#### Usage with a custom element
+#### Basic usage
 
 ```jsx
-<FlexItem
-  as="input"
-  href="#foo"
-  selfEnd
-  grow={3}
-/>
+<FlexItem id="myDiv" class="some-class" selfEnd grow={3} />
+```
+
+#### Usage with a different element
+
+```jsx
+<FlexItem as="a" href="#foo" onClick={handleClick} grow />
 ```
 
 #### Usage with a custom component
@@ -366,12 +369,7 @@ const MyComp = ({ size }) => (
 )
 
 return (
-  <FlexItem
-    as={MyComp}
-    size={18}
-    selfEnd
-    grow={3}
-  />
+  <FlexItem as={MyComp} size={18} selfEnd />
 )
 ```
 
