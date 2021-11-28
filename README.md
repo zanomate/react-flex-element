@@ -10,22 +10,25 @@ for React.
 ![image](static/flex.png)
 
 ```jsx
-<Flex row spaceBetween>
-  <FlexItem selfStart ... />
-  <FlexItem shrink grow ... />
+<Flex row spaceBetween gap={32}>
+  <FlexItem selfStart />
+  <FlexItem shrink grow />
   <Flex
     selfStretch
     column
     spaceBetween
     alignEnd
+    gap={16}
     grow={2}
   >
-    <FlexItem selfStretch ... />
-    <FlexItem selfCenter ... />
-    <FlexItem grow ... />
+    <FlexItem selfStretch />
+    <FlexItem selfCenter />
+    <FlexItem grow />
   </Flex>
 </Flex>
 ```
+
+[**Live Example**](https://codesandbox.io/s/basic-dur0q)
 
 ## Tl;dr
 
