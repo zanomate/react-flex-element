@@ -44,7 +44,7 @@ Read [here](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_La
 3 ways to set properties:
 
 - flags (`row`, `start`, `stretch`, ecc...)
-- classic properties (`displayProperty`, `flexDirectionProperty`, `justifyContentProperty`, ecc...)
+- classic properties (`display`, `flexDirection`, `justifyContent`, ecc...)
 - short version of classic properties (`justify`, `align`, `self`, ecc...)
 
 ## Install
@@ -65,18 +65,20 @@ Every Flexbox property can be set via one or more dedicated props.
 This first set of props refers to "flex container" related properties. For this reason they are only available for the
 component `Flex`.
 
-#### displayProperty
+#### display
 
 | props | type | value |
 | --- | --- | --- |
 | / | / | `flex` (default) |
 | `inline` | `boolean` | `inline-flex` |
-| `displayProperty` | `string` | any |
+| `display` | `string` | any |
 
 ```jsx
-<Flex /> // flex
-<Flex inline /> // inline-flex
-<Flex display="inline-flex" /> // inline-flex
+<>
+  <Flex /> // flex
+  <Flex inline /> // inline-flex
+  <Flex display="inline-flex" /> // inline-flex
+</>
 ```
 
 #### flex-direction
@@ -84,21 +86,23 @@ component `Flex`.
 | props | type | value |
 | --- | --- | --- |
 | `row` | `boolean` | `row` (default) |
-| `col`, `column` | `boolean` | `column` |
+| `col` or `column` | `boolean` | `column` |
 | `rowReverse` | `boolean` | `row-reverse` |
-| `colReverse`, `columnReverse` | `boolean` | `column-reverse` |
-| `direction`, `flexDirectionProperty` | `string` | any |
+| `colReverse` or `columnReverse` | `boolean` | `column-reverse` |
+| `direction` or `flexDirection` | `string` | any |
 
 ```jsx
-<Flex row /> // row
-<Flex col /> // column
-<Flex column /> // column
-<Flex rowReverse /> // row-reverse
-<Flex colReverse /> // column-reverse
-<Flex columnReverse /> // column-reverse
+<>
+  <Flex row /> // row
+  <Flex col /> // column
+  <Flex column /> // column
+  <Flex rowReverse /> // row-reverse
+  <Flex colReverse /> // column-reverse
+  <Flex columnReverse /> // column-reverse
 
-<Flex direction="column-reverse" /> // column-reverse
-<Flex flexDirection="column-reverse" /> // column-reverse
+  <Flex direction="column-reverse" /> // column-reverse
+  <Flex flexDirection="column-reverse" /> // column-reverse
+</>
 ```
 
 The additional `reverse` prop can be used to programmatically revert the specified direction:
@@ -108,9 +112,11 @@ The additional `reverse` prop can be used to programmatically revert the specifi
 | `reverse` | `boolean` |
 
 ```jsx
-<Flex row reverse /> // row-reverse
-<Flex row reverse={true} /> // row-reverse
-<Flex row reverse={false} /> // row
+<>
+  <Flex row reverse /> // row-reverse
+  <Flex row reverse={true} /> // row-reverse
+  <Flex row reverse={false} /> // row
+</>
 ```
 
 #### flex-wrap
@@ -120,18 +126,20 @@ The additional `reverse` prop can be used to programmatically revert the specifi
 | `nowrap` | `boolean` | `nowrap` (default) |
 | `wrap` | `boolean` | `wrap` |
 | `wrapReverse` | `boolean` | `wrap-reverse` |
-| `wrap`, `flexWrap` | `string` | any |
+| `wrap` or `flexWrap` | `string` | any |
 
 ```jsx
-<Flex wrap /> // wrap
-<Flex nowrap /> // nowrap
-<Flex wrapReverse /> // wrap-reverse
+<>
+  <Flex wrap /> // wrap
+  <Flex nowrap /> // nowrap
+  <Flex wrapReverse /> // wrap-reverse
 
-<Flex wrap={true} /> // wrap
-<Flex wrap={false} /> // nowrap
+  <Flex wrap={true} /> // wrap
+  <Flex wrap={false} /> // nowrap
 
-<Flex wrap="wrap-reverse" /> // wrap-reverse
-<Flex flexWrap="wrap-reverse" /> // wrap-reverse
+  <Flex wrap="wrap-reverse" /> // wrap-reverse
+  <Flex flexWrap="wrap-reverse" /> // wrap-reverse
+</>
 ```
 
 #### justify-content
@@ -144,18 +152,20 @@ The additional `reverse` prop can be used to programmatically revert the specifi
 | `spaceBetween` | `boolean` | `space-between` |
 | `spaceAround` | `boolean` | `space-around` |
 | `spaceEvenly` | `boolean` | `space-evenly` |
-| `justify`, `justifyContent` | `string` | any |
+| `justify` or `justifyContent` | `string` | any |
 
 ```jsx
-<Flex start /> // flex-start
-<Flex end /> // flex-end
-<Flex center /> // center
-<Flex spaceBetween /> // space-between
-<Flex spaceAround /> // space-around
-<Flex spaceEvenly /> // space-evenly
+<>
+  <Flex start /> // flex-start
+  <Flex end /> // flex-end
+  <Flex center /> // center
+  <Flex spaceBetween /> // space-between
+  <Flex spaceAround /> // space-around
+  <Flex spaceEvenly /> // space-evenly
 
-<Flex justify="space-beetween" /> // space-beetween
-<Flex justifyContent="space-beetween" /> // space-beetween
+  <Flex justify="space-beetween" /> // space-beetween
+  <Flex justifyContent="space-beetween" /> // space-beetween
+</>
 ```
 
 #### align-items
@@ -165,19 +175,21 @@ The additional `reverse` prop can be used to programmatically revert the specifi
 | `alignStart` | `boolean` | `flex-start` |
 | `alignEnd` | `boolean` | `flex-end` |
 | `alignCenter` | `boolean` | `center` (default) |
-| `stretch`, `alignStretch` | `boolean` | `stretch` |
-| `baseline`, `alignBaseline` | `boolean` | `baseline` |
-| `align`, `alignItems` | `string` | any |
+| `stretch` or `alignStretch` | `boolean` | `stretch` |
+| `baseline` or `alignBaseline` | `boolean` | `baseline` |
+| `align` or `alignItems` | `string` | any |
 
 ```jsx
-<Flex alignStart /> // flex-start
-<Flex alignEnd /> // flex-end
-<Flex alignCenter /> // center
-<Flex alignStretch /> // stretch
-<Flex alignBaseline /> // baseline
+<>
+  <Flex alignStart /> // flex-start
+  <Flex alignEnd /> // flex-end
+  <Flex alignCenter /> // center
+  <Flex alignStretch /> // stretch
+  <Flex alignBaseline /> // baseline
 
-<Flex align="flex-end" /> // flex-end
-<Flex alignItems="flex-end" /> // flex-end
+  <Flex align="flex-end" /> // flex-end
+  <Flex alignItems="flex-end" /> // flex-end
+</>
 ```
 
 #### align-content
@@ -192,52 +204,60 @@ The additional `reverse` prop can be used to programmatically revert the specifi
 | `alignContent` | `string` | any |
 
 ```jsx
-<Flex contentStart /> // flex-start
-<Flex contentEnd /> // flex-end
-<Flex contentCenter /> // center
-<Flex contentStretch /> // stretch
-<Flex contentSpaceBetween /> // space-between
-<Flex contentSpaceAround /> // space-around
+<>
+  <Flex contentStart /> // flex-start
+  <Flex contentEnd /> // flex-end
+  <Flex contentCenter /> // center
+  <Flex contentStretch /> // stretch
+  <Flex contentSpaceBetween /> // space-between
+  <Flex contentSpaceAround /> // space-around
 
-<Flex alignContent="flex-end" /> // flex-end
+  <Flex alignContent="flex-end" /> // flex-end
+</>
 ```
 
 #### row-gap
 
 | props | type | value |
 | --- | --- | --- |
-| `rowGap` | `number`, `string` | any |
+| `rowGap` | `number` or `string` | any |
 
 ```jsx
-<Flex rowGap={10} /> // 10px
-<Flex rowGap="10px" /> // 10px
+<>
+  <Flex rowGap={10} /> // 10px
+  <Flex rowGap="10px" /> // 10px
+</>
 ```
 
 #### column-gap
 
 | props | type | value |
 | --- | --- | --- |
-| `colGap`, `columnGap` | `number`, `string` | any |
+| `colGap` or `columnGap` | `number` or `string` | any |
 
 ```jsx
-<Flex colGap={10} /> // 10px
-<Flex colGap="10px" /> // 10px
-<Flex columnGap={10} /> // 10px
-<Flex columnGap="10px" /> // 10px
+<>
+  <Flex colGap={10} /> // 10px
+  <Flex colGap="10px" /> // 10px
+  <Flex columnGap={10} /> // 10px
+  <Flex columnGap="10px" /> // 10px
+</>
 ```
 
 #### gap
 
 | props | type | value |
 | --- | --- | --- |
-| `gap` | `number`, `string`, `Array` | any |
+| `gap` | `number` or `string` or `Array` | any |
 
 ```jsx
-<Flex gap={10} /> // 10px
-<Flex gap="10px" /> // 10px
+<>
+  <Flex gap={10} /> // 10px
+  <Flex gap="10px" /> // 10px
 
-<Flex gap={[10, 20]} /> // 10px 20px
-<Flex gap="10px 20px" /> // 10px 20px
+  <Flex gap={[10, 20]} /> // 10px 20px
+  <Flex gap="10px 20px" /> // 10px 20px
+</>
 ```
 
 ### Flexible "item" props
@@ -249,56 +269,64 @@ components.
 
 | props | type | value |
 | --- | --- | --- |
-| `order` | `number`, `string` | any |
+| `order` | `number` or `string` | any |
 
 ```jsx
-<Flex order={3} /> // 3
-<Flex order="3" /> // 3
+<>
+  <Flex order={3} /> // 3
+  <Flex order="3" /> // 3
+</>
 ```
 
 #### flex-grow
 
 | props | type | value |
 | --- | --- | --- |
-| `grow`, `flexGrow` | `booolean, number, string` | / |
+| `grow` or `flexGrow` | `booolean` or `number` or `string` | / |
 
 ```jsx
-<Flex grow /> // 1
-<Flex grow={true} /> // 1
-<Flex grow={false} /> // 0
-<Flex grow={3} /> // 3
-<Flex grow="3" /> // 3
-<Flex flexGrow={3} /> // 3
-<Flex flexGrow="3" /> // 3
+<>
+  <Flex grow /> // 1
+  <Flex grow={true} /> // 1
+  <Flex grow={false} /> // 0
+  <Flex grow={3} /> // 3
+  <Flex grow="3" /> // 3
+  <Flex flexGrow={3} /> // 3
+  <Flex flexGrow="3" /> // 3
+</>
 ```
 
 #### flex-shrink
 
 | props | type | value |
 | --- | --- | --- |
-| `shrink`, `flexShrink` | `booolean, number, string` | / |
+| `shrink` or `flexShrink` | `booolean` or `number` or `string` | / |
 
 ```jsx
-<Flex shrink /> // 1
-<Flex shrink={true} /> // 1
-<Flex shrink={false} /> // 0
-<Flex shrink={3} /> // 3
-<Flex shrink="3" /> // 3
-<Flex flexShrink={3} /> // 3
-<Flex flexShrink="3" /> // 3
+<>
+  <Flex shrink /> // 1
+  <Flex shrink={true} /> // 1
+  <Flex shrink={false} /> // 0
+  <Flex shrink={3} /> // 3
+  <Flex shrink="3" /> // 3
+  <Flex flexShrink={3} /> // 3
+  <Flex flexShrink="3" /> // 3
+</>
 ```
 
 #### flex-basis
 
 | props | type | value |
 | --- | --- | --- |
-| `basis`, `flexBasis` | `number, string` | / |
+| `basis` or `flexBasis` | `number` or `string` | / |
 
 ```jsx
-<Flex basis={10} /> // 10px
-<Flex basis="10px" /> // 10px
-<Flex flexBasis={10} /> // 10px
-<Flex flexBasis="10px" /> // 10px
+<>
+  <Flex basis={10} /> // 10px
+  <Flex basis="10px" /> // 10px
+  <Flex flexBasis={10} /> // 10px
+  <Flex flexBasis="10px" /> // 10px
+</>
 ```
 
 #### align-self
@@ -310,7 +338,7 @@ components.
 | `selfCenter` | `boolean` | `center` |
 | `selfStretch` | `boolean` | `stretch` |
 | `selfBaseline` | `boolean` | `baseline` |
-| `self`, `alignSelf` | `string` | / |
+| `self` or `alignSelf` | `string` | / |
 
 ```jsx
 <>
@@ -333,16 +361,15 @@ Nevertheless, it is possible to change this behaviour via the `as` prop:
 
 | props | type |
 | --- | --- |
-| `as` | `string`, `React.ComponentType` |
+| `as` | `string` or `React.ComponentType` |
 
 Examples:
 
 ```jsx
-<Flex as="input" />
-```
-
-```jsx
-<Flex as={MyCustomComp} />
+<>
+  <Flex as="input" />
+  <Flex as={MyCustomComp} />
+</>
 ```
 
 In addition, any additional prop passed to `Flex` or `FlexItem` will be drilled down to the render element or component.
@@ -386,12 +413,8 @@ Use it to create a flexible container.
 By default, it renders a `div` element with the following CSS properties set:
 
 ```css
-display: flex
-
-;
-align-items: center
-
-;
+display: flex;
+align-items: center;
 ```
 
 It provides all the properties listed above.
