@@ -4,7 +4,8 @@
 [![npm type definitions](https://img.shields.io/npm/types/react-flex-element)](https://www.npmjs.com/package/typescript)
 [![npm peer dependency version (scoped)](https://img.shields.io/npm/dependency-version/react-flex-element/peer/react)](https://www.npmjs.com/package/react)
 
-[Flexbox](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Basic_Concepts_of_Flexbox) elements for React.
+[Flexbox](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Basic_Concepts_of_Flexbox) elements
+for React.
 
 ![image](static/flex.png)
 
@@ -28,17 +29,20 @@
 
 ## Tl;dr
 
-You don't know CSS Flexbox? Read [here](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Basic_Concepts_of_Flexbox)!
+You don't know CSS Flexbox?
+Read [here](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Basic_Concepts_of_Flexbox)!
 
 2 components:
+
 - `<Flex />`
-  - creates a flex container.
-  - provides **EVERY** Flexbox property.
+    - creates a flex container.
+    - provides **EVERY** Flexbox property.
 - `<FlexItem />`
-  - creates a flexed item.
-  - provides Flexbox properties for items only.
+    - creates a flexed item.
+    - provides Flexbox properties for items only.
 
 3 ways to set properties:
+
 - flags (`row`, `start`, `stretch`, ecc...)
 - classic properties (`displayProperty`, `flexDirectionProperty`, `justifyContentProperty`, ecc...)
 - short version of classic properties (`justify`, `align`, `self`, ecc...)
@@ -58,8 +62,8 @@ Every Flexbox property can be set via one or more dedicated props.
 
 ### Flexible "container" props
 
-This first set of props refers to "flex container" related properties.
-For this reason they are only available for the component `Flex`.
+This first set of props refers to "flex container" related properties. For this reason they are only available for the
+component `Flex`.
 
 #### displayProperty
 
@@ -72,7 +76,7 @@ For this reason they are only available for the component `Flex`.
 ```jsx
 <Flex /> // flex
 <Flex inline /> // inline-flex
-<Flex display="inline-flex"/> // inline-flex
+<Flex display="inline-flex" /> // inline-flex
 ```
 
 #### flex-direction
@@ -238,8 +242,8 @@ The additional `reverse` prop can be used to programmatically revert the specifi
 
 ### Flexible "item" props
 
-The set of props below refers to "flex items" related properties.
-They are all available for both `Flex` and `FlexItem` components.
+The set of props below refers to "flex items" related properties. They are all available for both `Flex` and `FlexItem`
+components.
 
 #### order
 
@@ -321,8 +325,7 @@ They are all available for both `Flex` and `FlexItem` components.
 
 ### Other props
 
-By default, both `Flex` and `FlexItem` components renders a `div` element
-with the specified flex properties.
+By default, both `Flex` and `FlexItem` components renders a `div` element with the specified flex properties.
 
 Nevertheless, it is possible to change this behaviour via the `as` prop:
 
@@ -330,7 +333,7 @@ Nevertheless, it is possible to change this behaviour via the `as` prop:
 | --- | --- |
 | `as` | `string`, `React.ComponentType` |
 
-Changes the rendered element.
+Examples:
 
 ```jsx
 <Flex as="input" />
@@ -340,8 +343,7 @@ Changes the rendered element.
 <Flex as={MyCustomComp} />
 ```
 
-In addition, any additional prop passed to `Flex` or `FlexItem` will be drilled
-down to the render element or component.
+In addition, any additional prop passed to `Flex` or `FlexItem` will be drilled down to the render element or component.
 
 #### Usage with a custom element
 
@@ -362,16 +364,16 @@ const MyComp = ({ size }) => (
     {children}
   </span>
 )
-```
-```jsx
-<FlexItem
-  as={MyComp}
-  size={18}
-  selfEnd
-  grow={3}
-/>
-```
 
+return (
+  <FlexItem
+    as={MyComp}
+    size={18}
+    selfEnd
+    grow={3}
+  />
+)
+```
 
 ## Components
 
@@ -384,9 +386,14 @@ Use it to create a flexible container.
 ```
 
 By default, it renders a `div` element with the following CSS properties set:
+
 ```css
-display: flex;
-align-items: center;
+display: flex
+
+;
+align-items: center
+
+;
 ```
 
 It provides all the properties listed above.
