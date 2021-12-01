@@ -5,6 +5,5 @@
     "declaration": true,
     "allowSyntheticDefaultImports": true,
     "moduleResolution": "Node",
-    "jsx": "react"
   }
 }
