@@ -1,15 +1,15 @@
 {
   "name": "react-flex-element",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Flexbox elements for React.",
-  "main": "dist/index.min.js",
-  "module": "dist/index.esm.min.js",
+  "main": "dist/index.js",
+  "module": "src/index.js",
   "types": "dist/index.d.ts",
   "files": [
     "dist"
   ],
   "scripts": {
-    "bundle": "rimraf dist && bili --format esm-min --format cjs-min",
+    "bundle": "rimraf dist && webpack",
     "test": "jest"
   },
   "repository": {
@@ -32,15 +32,16 @@
     "@types/jest": "^27.0.1",
     "@types/lodash": "^4.14.175",
     "@types/react": "^17.0.30",
-    "bili": "^5.0.5",
     "jest": "^27.1.0",
     "jest-canvas-mock": "^2.3.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "rimraf": "^3.0.2",
-    "rollup": "^2.56.3",
-    "rollup-plugin-typescript2": "^0.31.1",
-    "typescript": "^4.5.2"
+    "typescript": "^4.5.2",
+    "webpack": "^5.65.0",
+    "webpack-cli": "^4.9.1",
+    "ts-loader": "^9.2.6",
+    "babel-loader": "^8.2.3"
   },
   "peerDependencies": {
     "react": "^17.0.2"

@@ -1,4 +1,3 @@
-/// <reference types="react" />
 import { ItemProps } from '../types/ItemProps';
 import { StyledElementProps, WithStyle } from './StyledElement';
 export declare type FlexItemProps<P extends WithStyle> = ItemProps & StyledElementProps<P>;
