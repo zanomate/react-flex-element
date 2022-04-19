@@ -15,7 +15,7 @@ import { ContainerProps } from '../types/ContainerProps'
 import { ItemProps } from '../types/ItemProps'
 import { As, StyledElement, StyledElementProps, WithStyle } from './StyledElement'
 
-export type FlexProps<P extends WithStyle> = React.PropsWithChildren<P & ContainerProps & ItemProps> & {
+export type FlexProps<P extends WithStyle> = Omit<React.PropsWithChildren<P & ContainerProps & ItemProps>, 'as'> & {
   as?: As<P>
 }
 
