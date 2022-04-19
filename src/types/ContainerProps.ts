@@ -47,10 +47,10 @@ export interface ContainerProps {
   contentSpaceBetween?: boolean
   contentSpaceAround?: boolean
   // gap
-  gap?: Property.Gap | Property.Gap[]
+  gap?: Property.Gap<number> | Property.Gap<number>[]
   // row-gap
-  rowGap?: Property.RowGap
+  rowGap?: Property.RowGap<number>
   // column-gap
-  columnGap?: Property.ColumnGap
-  colGap?: Property.ColumnGap
+  columnGap?: Property.ColumnGap<number>
+  colGap?: Property.ColumnGap<number>
 }

@@ -2,28 +2,28 @@ import { Property } from 'csstype'
 import { CSSProperties } from 'react'
 
 export const rowGapProperty = (
-  rowGap: Property.RowGap | undefined,
-  defaultValue: Property.RowGap,
-): Property.RowGap => {
+  rowGap: Property.RowGap<number> | undefined,
+  defaultValue: Property.RowGap<number>,
+): Property.RowGap<number> => {
   if (rowGap) return rowGap
   return defaultValue
 }
 
 export const columnGapProperty = (
-  columnGap: Property.ColumnGap | undefined,
-  colGap: Property.ColumnGap | undefined,
-  defaultValue: Property.ColumnGap,
-): Property.ColumnGap => {
+  columnGap: Property.ColumnGap<number> | undefined,
+  colGap: Property.ColumnGap<number> | undefined,
+  defaultValue: Property.ColumnGap<number>,
+): Property.ColumnGap<number> => {
   if (columnGap) return columnGap
   if (colGap) return colGap
   return defaultValue
 }
 
 export const gapProperties = (
-  rowGap: Property.RowGap | undefined,
-  columnGap: Property.ColumnGap | undefined,
-  colGap: Property.ColumnGap | undefined,
-  gap: Property.Gap | Property.Gap[] | undefined,
+  rowGap: Property.RowGap<number> | undefined,
+  columnGap: Property.ColumnGap<number> | undefined,
+  colGap: Property.ColumnGap<number> | undefined,
+  gap: Property.Gap<number> | Property.Gap<number>[] | undefined,
   defaultPropertiesValues: CSSProperties,
 ): CSSProperties => {
   let props: CSSProperties = defaultPropertiesValues

@@ -39,8 +39,8 @@ export interface ContainerProps {
     contentStretch?: boolean;
     contentSpaceBetween?: boolean;
     contentSpaceAround?: boolean;
-    gap?: Property.Gap | Property.Gap[];
-    rowGap?: Property.RowGap;
-    columnGap?: Property.ColumnGap;
-    colGap?: Property.ColumnGap;
+    gap?: Property.Gap<number> | Property.Gap<number>[];
+    rowGap?: Property.RowGap<number>;
+    columnGap?: Property.ColumnGap<number>;
+    colGap?: Property.ColumnGap<number>;
 }

@@ -5,7 +5,6 @@ import { flexGrowProperty } from '../properties/flexGrowProperty'
 import { flexShrinkProperty } from '../properties/flexShrinkProperty'
 import { orderProperty } from '../properties/orderProperty'
 import { ItemProps } from '../types/ItemProps'
-import { Flex } from './Flex'
 import { StyledElement, StyledElementProps, WithStyle } from './StyledElement'
 
 export type FlexItemProps<P extends WithStyle> = ItemProps & StyledElementProps<P>
@@ -35,5 +34,5 @@ export const FlexItem = <P extends WithStyle>(props: FlexItemProps<P>) => {
 }
 
 FlexItem.defaultProps = {
-  as: 'div'
+  as: 'div',
 }

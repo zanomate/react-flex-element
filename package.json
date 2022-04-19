@@ -1,6 +1,6 @@
 {
   "name": "react-flex-element",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Flexbox elements for React.",
   "main": "dist/index.js",
   "module": "src/index.js",
