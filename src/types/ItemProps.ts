@@ -5,10 +5,10 @@ export interface ItemProps {
   order?: Property.Order
   // flex-grow
   flexGrow?: Property.FlexGrow
-  grow?: Property.FlexGrow
+  grow?: Property.FlexGrow | boolean
   // flex-shrink
   flexShrink?: Property.FlexShrink
-  shrink?: Property.FlexShrink
+  shrink?: Property.FlexShrink | boolean
   // flex-basis
   flexBasis?: Property.FlexBasis
   basis?: Property.FlexBasis
