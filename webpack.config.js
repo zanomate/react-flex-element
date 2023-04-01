@@ -1,4 +1,4 @@
-const path = require('path')
+const path = require('path');
 
 module.exports = {
   mode: 'production',
@@ -21,10 +21,6 @@ module.exports = {
     ],
   },
   resolve: {
-    extensions: ['.ts']
+    extensions: ['.ts'],
   },
-  externals: {
-    'react': 'react',
-    'react-dom' : 'reactDOM'
-  }
-}
+};
