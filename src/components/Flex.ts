@@ -1,4 +1,4 @@
-import React, { createElement, CSSProperties } from 'react'
+import React, { createElement, CSSProperties, ForwardedRef, forwardRef } from 'react'
 import { alignContentProperty } from '../properties/alignContentProperty'
 import { alignItemsProperty } from '../properties/alignItemsProperty'
 import { alignSelfProperty } from '../properties/alignSelfProperty'
@@ -9,8 +9,10 @@ import { flexGrowProperty } from '../properties/flexGrowProperty'
 import { flexShrinkProperty } from '../properties/flexShrinkProperty'
 import { flexWrapProperty } from '../properties/flexWrapProperty'
 import { gapProperties } from '../properties/gap'
+import { heightProperty } from '../properties/heightProperty'
 import { justifyContentProperty } from '../properties/justifyContentProperty'
 import { orderProperty } from '../properties/orderProperty'
+import { widthProperty } from '../properties/widthProperty'
 import { ContainerProps } from '../types/ContainerProps'
 import { ItemProps } from '../types/ItemProps'
 import { As, StyledElement, StyledElementProps, WithStyle } from './StyledElement'
@@ -19,7 +21,7 @@ export type FlexProps<P extends WithStyle> = Omit<React.PropsWithChildren<P & Co
   as?: As<P>
 }
 
-export const Flex = <P extends WithStyle>(props: FlexProps<P>) => {
+export const Flex = forwardRef(<T, P extends WithStyle>(props: FlexProps<P>, ref: ForwardedRef<T>) => {
   const {
     display, inline,
     flexDirection, direction, row, col, column, rowReverse, colReverse, columnReverse, reverse,
@@ -35,6 +37,7 @@ export const Flex = <P extends WithStyle>(props: FlexProps<P>) => {
     gap,
     rowGap,
     columnGap, colGap,
+    fill,
     ...otherProps
   } = props
 
@@ -51,13 +54,16 @@ export const Flex = <P extends WithStyle>(props: FlexProps<P>) => {
     flexShrink: flexShrinkProperty(flexShrink, shrink, undefined),
     flexBasis: flexBasisProperty(flexBasis, basis, undefined),
     alignSelf: alignSelfProperty(alignSelf, self, selfStart, selfEnd, selfCenter, selfStretch, selfBaseline, undefined),
+    width: widthProperty(fill, undefined),
+    height: heightProperty(fill, undefined),
   }
 
   return createElement(StyledElement, {
     ...otherProps as StyledElementProps<P>,
+    ref,
     injectedStyle,
   })
-}
+})
 
 Flex.defaultProps = {
   as: 'div',

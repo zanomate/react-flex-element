@@ -1,2 +1,0 @@
-import { Property } from 'csstype';
-export declare const justifyContentProperty: (justifyContent: Property.JustifyContent | undefined, justify: Property.JustifyContent | undefined, start: boolean | undefined, end: boolean | undefined, center: boolean | undefined, spaceBetween: boolean | undefined, spaceAround: boolean | undefined, spaceEvenly: boolean | undefined, defaultValue: Property.JustifyContent) => Property.JustifyContent;

@@ -1,2 +1,0 @@
-import { Property } from 'csstype';
-export declare const alignItemsProperty: (alignItems: Property.AlignItems | undefined, align: Property.AlignItems | undefined, alignStart: boolean | undefined, alignEnd: boolean | undefined, alignCenter: boolean | undefined, stretch: boolean | undefined, alignStretch: boolean | undefined, baseline: boolean | undefined, alignBaseline: boolean | undefined, defaultValue: Property.AlignItems) => Property.AlignItems;

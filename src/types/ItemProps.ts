@@ -20,4 +20,6 @@ export interface ItemProps {
   selfCenter?: boolean
   selfStretch?: boolean
   selfBaseline?: boolean
+  // special
+  fill?: boolean
 }
