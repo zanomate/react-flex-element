@@ -47,6 +47,7 @@ interface ContainerProps {
     colGap?: Property.ColumnGap<number>;
 }
 
+type FillValue = boolean | 'x' | 'y' | 'page' | 'page-x' | 'page-y';
 interface ItemProps {
     order?: Property.Order;
     flexGrow?: Property.FlexGrow;
@@ -62,13 +63,13 @@ interface ItemProps {
     selfCenter?: boolean;
     selfStretch?: boolean;
     selfBaseline?: boolean;
-    fill?: boolean;
+    fill?: FillValue;
 }
 
 interface WithStyle {
     style?: CSSProperties;
 }
-declare type As<P extends WithStyle> = string | FunctionComponent<P> | ComponentClass<P>;
+type As<P extends WithStyle> = string | FunctionComponent<P> | ComponentClass<P>;
 
 declare const Flex: React.ForwardRefExoticComponent<Omit<React.PropsWithChildren<WithStyle & ContainerProps & ItemProps>, "as"> & {
     as?: As<WithStyle>;

@@ -1,5 +1,7 @@
 import { Property } from 'csstype'
 
+export type FillValue = boolean | 'x' | 'y' | 'page' | 'page-x' | 'page-y'
+
 export interface ItemProps {
   // order
   order?: Property.Order
@@ -21,5 +23,5 @@ export interface ItemProps {
   selfStretch?: boolean
   selfBaseline?: boolean
   // special
-  fill?: boolean
+  fill?: FillValue
 }

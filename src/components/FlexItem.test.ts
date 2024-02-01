@@ -91,4 +91,17 @@ describe('FlexItem', () => {
     expect(flexItemStyle({ self: 'flex-start', selfBaseline: true })).toHaveProperty('align-self', 'flex-start')
   })
 
+  it('width', () => {
+    expect(flexItemStyle({ fill: true })).toHaveProperty('width', '100%')
+    expect(flexItemStyle({ fill: 'x' })).toHaveProperty('width', '100%')
+    expect(flexItemStyle({ fill: 'page' })).toHaveProperty('width', '100vw')
+    expect(flexItemStyle({ fill: 'page-x' })).toHaveProperty('width', '100vw')
+  })
+
+  it('height', () => {
+    expect(flexItemStyle({ fill: true })).toHaveProperty('height', '100%')
+    expect(flexItemStyle({ fill: 'y' })).toHaveProperty('height', '100%')
+    expect(flexItemStyle({ fill: 'page' })).toHaveProperty('height', '100vh')
+    expect(flexItemStyle({ fill: 'page-y' })).toHaveProperty('height', '100vh')
+  })
 })

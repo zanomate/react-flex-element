@@ -2421,8 +2421,10 @@ var gapProperties = (rowGap, columnGap, colGap, gap, defaultPropertiesValues) =>
 
 // src/properties/heightProperty.ts
 var heightProperty = (fill, defaultValue) => {
-  if (fill === true || fill === "y" /* Y */)
+  if (fill === true || fill === "y")
     return "100%";
+  if (fill === "page" || "page-y")
+    return "100vh";
   return defaultValue;
 };
 
@@ -2456,8 +2458,10 @@ var orderProperty = (order, defaultValue) => {
 
 // src/properties/widthProperty.ts
 var widthProperty = (fill, defaultValue) => {
-  if (fill === true || fill === "x" /* X */)
+  if (fill === true || fill === "x")
     return "100%";
+  if (fill === "page" || "page-x")
+    return "100vw";
   return defaultValue;
 };
 
