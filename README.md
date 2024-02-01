@@ -2,7 +2,6 @@
 
 [![npm (scoped)](https://img.shields.io/npm/v/react-flex-element?style=flat-square)](https://www.npmjs.com/package/react-flex-element)
 [![npm type definitions](https://img.shields.io/npm/types/react-flex-element)](https://www.npmjs.com/package/typescript)
-[![npm peer dependency version (scoped)](https://img.shields.io/npm/dependency-version/react-flex-element/peer/react)](https://www.npmjs.com/package/react)
 
 [Flexbox](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Basic_Concepts_of_Flexbox) elements
 for React.
@@ -353,6 +352,23 @@ components.
   
   <Flex self="flex-end" /> // flex-end
   <Flex alignSelf="flex-end" /> // flex-end
+<>
+```
+
+#### width and height
+
+| props                 | type                | value     |
+|-----------------------|---------------------|-----------|
+| `fill`                | `boolean \| string` | see below |
+
+```jsx
+<>
+  <Flex fill /> // 100% width and height
+  <Flex fill="x" /> // 100% width
+  <Flex fill="y" /> // 100% height
+  <Flex fill="page" /> // 100vw width and 100vh height
+  <Flex fill="page-x" /> // 100vw width
+  <Flex fill="page-y" /> // 100vh height
 <>
 ```
 
