@@ -6,6 +6,6 @@ export const widthProperty = (
   defaultValue: Property.Width,
 ): Property.FlexBasis => {
   if (fill === true || fill === 'x') return '100%'
-  if (fill === 'page' || 'page-x') return '100vw'
+  if (fill === 'page' || fill === 'page-x') return '100vw'
   return defaultValue
 }

@@ -96,6 +96,7 @@ describe('FlexItem', () => {
     expect(flexItemStyle({ fill: 'x' })).toHaveProperty('width', '100%')
     expect(flexItemStyle({ fill: 'page' })).toHaveProperty('width', '100vw')
     expect(flexItemStyle({ fill: 'page-x' })).toHaveProperty('width', '100vw')
+    expect(flexItemStyle({})).toHaveProperty('width', '')
   })
 
   it('height', () => {
@@ -103,5 +104,6 @@ describe('FlexItem', () => {
     expect(flexItemStyle({ fill: 'y' })).toHaveProperty('height', '100%')
     expect(flexItemStyle({ fill: 'page' })).toHaveProperty('height', '100vh')
     expect(flexItemStyle({ fill: 'page-y' })).toHaveProperty('height', '100vh')
+    expect(flexItemStyle({})).toHaveProperty('height', '')
   })
 })

@@ -6,6 +6,6 @@ export const heightProperty = (
   defaultValue: Property.Height,
 ): Property.FlexBasis => {
   if (fill === true || fill === 'y') return '100%'
-  if (fill === 'page' || 'page-y') return '100vh'
+  if (fill === 'page' || fill === 'page-y') return '100vh'
   return defaultValue
 }

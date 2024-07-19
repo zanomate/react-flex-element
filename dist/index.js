@@ -2423,7 +2423,7 @@ var gapProperties = (rowGap, columnGap, colGap, gap, defaultPropertiesValues) =>
 var heightProperty = (fill, defaultValue) => {
   if (fill === true || fill === "y")
     return "100%";
-  if (fill === "page" || "page-y")
+  if (fill === "page" || fill === "page-y")
     return "100vh";
   return defaultValue;
 };
@@ -2460,7 +2460,7 @@ var orderProperty = (order, defaultValue) => {
 var widthProperty = (fill, defaultValue) => {
   if (fill === true || fill === "x")
     return "100%";
-  if (fill === "page" || "page-x")
+  if (fill === "page" || fill === "page-x")
     return "100vw";
   return defaultValue;
 };
