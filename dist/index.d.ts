@@ -1,5 +1,5 @@
+import React, { FunctionComponent, ComponentClass, CSSProperties } from 'react';
 import { Property } from 'csstype';
-import React, { CSSProperties, FunctionComponent, ComponentClass } from 'react';
 
 interface ContainerProps {
     display?: Property.Display;
@@ -71,12 +71,18 @@ interface WithStyle {
 }
 type As<P extends WithStyle> = string | FunctionComponent<P> | ComponentClass<P>;
 
+type FlexProps<P extends WithStyle> = Omit<React.PropsWithChildren<P & ContainerProps & ItemProps>, 'as'> & {
+    as?: As<P>;
+};
 declare const Flex: React.ForwardRefExoticComponent<Omit<React.PropsWithChildren<WithStyle & ContainerProps & ItemProps>, "as"> & {
     as?: As<WithStyle>;
 } & React.RefAttributes<unknown>>;
 
+type FlexItemProps<P extends WithStyle> = Omit<React.PropsWithChildren<P & ItemProps>, 'as'> & {
+    as?: As<P>;
+};
 declare const FlexItem: React.ForwardRefExoticComponent<Omit<React.PropsWithChildren<WithStyle & ItemProps>, "as"> & {
     as?: As<WithStyle>;
 } & React.RefAttributes<unknown>>;
 
-export { type ContainerProps, Flex, FlexItem, type ItemProps };
+export { type As, type ContainerProps, Flex, FlexItem, type FlexItemProps, type FlexProps, type ItemProps };
