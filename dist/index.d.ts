@@ -1,4 +1,4 @@
-import React, { FunctionComponent, ComponentClass, CSSProperties } from 'react';
+import React, { CSSProperties, FunctionComponent, ComponentClass } from 'react';
 import { Property } from 'csstype';
 
 interface ContainerProps {
@@ -85,4 +85,4 @@ declare const FlexItem: React.ForwardRefExoticComponent<Omit<React.PropsWithChil
     as?: As<WithStyle>;
 } & React.RefAttributes<unknown>>;
 
-export { type As, type ContainerProps, Flex, FlexItem, type FlexItemProps, type FlexProps, type ItemProps };
+export { type As, type ContainerProps, Flex, FlexItem, type FlexItemProps, type FlexProps, type ItemProps, type WithStyle };

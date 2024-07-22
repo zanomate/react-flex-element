@@ -1,11 +1,12 @@
 import { Flex, FlexProps } from './components/Flex'
 import { FlexItem, FlexItemProps } from './components/FlexItem'
-import { As } from './components/StyledElement'
+import { As, WithStyle } from './components/StyledElement'
 import { ContainerProps } from './types/ContainerProps'
 import { ItemProps } from './types/ItemProps'
 
 export {
   As,
+  WithStyle,
   ContainerProps,
   ItemProps,
   Flex,
