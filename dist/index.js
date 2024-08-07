@@ -2477,7 +2477,7 @@ var StyledElement = (props) => {
 };
 
 // src/components/Flex.ts
-var Flex = (0, import_react2.forwardRef)((props, ref) => {
+var FlexInner = (props, ref) => {
   const _a = props, {
     as = "div",
     display,
@@ -2620,11 +2620,12 @@ var Flex = (0, import_react2.forwardRef)((props, ref) => {
     ref,
     injectedStyle
   }));
-});
+};
+var Flex = (0, import_react2.forwardRef)(FlexInner);
 
 // src/components/FlexItem.ts
 var import_react3 = __toESM(require_react());
-var FlexItem = (0, import_react3.forwardRef)((props, ref) => {
+var FlexItemInner = (props, ref) => {
   const _a = props, {
     as = "div",
     order,
@@ -2674,7 +2675,8 @@ var FlexItem = (0, import_react3.forwardRef)((props, ref) => {
     ref,
     injectedStyle
   }));
-});
+};
+var FlexItem = (0, import_react3.forwardRef)(FlexItemInner);
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {
   Flex,

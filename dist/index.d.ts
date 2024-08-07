@@ -70,25 +70,30 @@ interface WithStyle {
     style?: CSSProperties;
 }
 type As<P extends WithStyle> = string | FunctionComponent<P> | ComponentClass<P>;
-
-declare module 'react' {
-    function forwardRef<T, P = {}>(render: (props: P, ref: React.Ref<T>) => React.ReactNode | null): (props: P & React.RefAttributes<T>) => React.ReactNode | null;
+interface StyledElementAsProps<P extends WithStyle> {
+    as: As<P>;
+    injectedStyle: CSSProperties;
 }
+type StyledElementProps<P extends WithStyle> = React.PropsWithChildren<P & StyledElementAsProps<P>>;
+
 type FlexProps<P extends WithStyle> = Omit<React.PropsWithChildren<P & ContainerProps & ItemProps>, 'as'> & {
     as?: As<P>;
 };
-declare const Flex: <T, P extends WithStyle>(props: Omit<React.PropsWithChildren<P & ContainerProps & ItemProps>, "as"> & {
+declare const FlexInner: <T, P extends WithStyle>(props: FlexProps<P>, ref: React.ForwardedRef<T>) => React.FunctionComponentElement<StyledElementProps<WithStyle>>;
+declare const Flex: <T extends HTMLElement, P extends WithStyle>(props: Omit<React.PropsWithChildren<P & ContainerProps & ItemProps>, "as"> & {
     as?: As<P>;
-} & React.RefAttributes<T>) => React.ReactNode;
+} & {
+    ref?: React.ForwardedRef<T>;
+}) => ReturnType<typeof FlexInner>;
 
-declare module "react" {
-    function forwardRef<T, P = {}>(render: (props: P, ref: React.Ref<T>) => React.ReactNode | null): (props: P & React.RefAttributes<T>) => React.ReactNode | null;
-}
 type FlexItemProps<P extends WithStyle> = Omit<React.PropsWithChildren<P & ItemProps>, 'as'> & {
     as?: As<P>;
 };
-declare const FlexItem: <T, P extends WithStyle>(props: Omit<React.PropsWithChildren<P & ItemProps>, "as"> & {
+declare const FlexItemInner: <T, P extends WithStyle>(props: FlexItemProps<P>, ref: React.ForwardedRef<T>) => React.FunctionComponentElement<StyledElementProps<WithStyle>>;
+declare const FlexItem: <T extends HTMLElement, P extends WithStyle>(props: Omit<React.PropsWithChildren<P & ItemProps>, "as"> & {
     as?: As<P>;
-} & React.RefAttributes<T>) => React.ReactNode | null;
+} & {
+    ref?: React.ForwardedRef<T>;
+}) => ReturnType<typeof FlexItemInner>;
 
 export { type As, type ContainerProps, Flex, FlexItem, type FlexItemProps, type FlexProps, type ItemProps, type WithStyle };

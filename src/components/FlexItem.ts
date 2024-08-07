@@ -9,17 +9,11 @@ import { widthProperty } from '../properties/widthProperty'
 import { ItemProps } from '../types/ItemProps'
 import { As, StyledElement, StyledElementProps, WithStyle } from './StyledElement'
 
-declare module "react" {
-  function forwardRef<T, P = {}>(
-    render: (props: P, ref: React.Ref<T>) => React.ReactNode | null
-  ): (props: P & React.RefAttributes<T>) => React.ReactNode | null;
-}
-
 export type FlexItemProps<P extends WithStyle> = Omit<React.PropsWithChildren<P & ItemProps>, 'as'> & {
   as?: As<P>
 }
 
-export const FlexItem = forwardRef(<T, P extends WithStyle>(props: FlexItemProps<P>, ref: ForwardedRef<T>) => {
+const FlexItemInner = <T, P extends WithStyle>(props: FlexItemProps<P>, ref: ForwardedRef<T>) => {
   const {
     as = 'div',
     order,
@@ -47,4 +41,8 @@ export const FlexItem = forwardRef(<T, P extends WithStyle>(props: FlexItemProps
     ref,
     injectedStyle,
   })
-})
+}
+
+export const FlexItem = forwardRef(FlexItemInner) as <T extends HTMLElement, P extends WithStyle>(
+  props: FlexItemProps<P> & { ref?: React.ForwardedRef<T> },
+) => ReturnType<typeof FlexItemInner>
