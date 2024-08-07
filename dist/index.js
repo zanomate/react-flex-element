@@ -2479,6 +2479,7 @@ var StyledElement = (props) => {
 // src/components/Flex.ts
 var Flex = (0, import_react2.forwardRef)((props, ref) => {
   const _a = props, {
+    as = "div",
     display,
     inline,
     flexDirection,
@@ -2538,6 +2539,7 @@ var Flex = (0, import_react2.forwardRef)((props, ref) => {
     colGap,
     fill
   } = _a, otherProps = __objRest(_a, [
+    "as",
     "display",
     "inline",
     "flexDirection",
@@ -2614,18 +2616,17 @@ var Flex = (0, import_react2.forwardRef)((props, ref) => {
     height: heightProperty(fill, void 0)
   });
   return (0, import_react2.createElement)(StyledElement, __spreadProps(__spreadValues({}, otherProps), {
+    as,
     ref,
     injectedStyle
   }));
 });
-Flex.defaultProps = {
-  as: "div"
-};
 
 // src/components/FlexItem.ts
 var import_react3 = __toESM(require_react());
 var FlexItem = (0, import_react3.forwardRef)((props, ref) => {
   const _a = props, {
+    as = "div",
     order,
     flexGrow,
     grow,
@@ -2642,6 +2643,7 @@ var FlexItem = (0, import_react3.forwardRef)((props, ref) => {
     selfBaseline,
     fill
   } = _a, otherProps = __objRest(_a, [
+    "as",
     "order",
     "flexGrow",
     "grow",
@@ -2668,13 +2670,11 @@ var FlexItem = (0, import_react3.forwardRef)((props, ref) => {
     height: heightProperty(fill, void 0)
   };
   return (0, import_react3.createElement)(StyledElement, __spreadProps(__spreadValues({}, otherProps), {
+    as,
     ref,
     injectedStyle
   }));
 });
-FlexItem.defaultProps = {
-  as: "div"
-};
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {
   Flex,

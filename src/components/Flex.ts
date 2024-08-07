@@ -17,12 +17,19 @@ import { ContainerProps } from '../types/ContainerProps'
 import { ItemProps } from '../types/ItemProps'
 import { As, StyledElement, StyledElementProps, WithStyle } from './StyledElement'
 
+declare module 'react' {
+  function forwardRef<T, P = {}>(
+    render: (props: P, ref: React.Ref<T>) => React.ReactNode | null,
+  ): (props: P & React.RefAttributes<T>) => React.ReactNode | null;
+}
+
 export type FlexProps<P extends WithStyle> = Omit<React.PropsWithChildren<P & ContainerProps & ItemProps>, 'as'> & {
   as?: As<P>
 }
 
 export const Flex = forwardRef(<T, P extends WithStyle>(props: FlexProps<P>, ref: ForwardedRef<T>) => {
   const {
+    as = 'div',
     display, inline,
     flexDirection, direction, row, col, column, rowReverse, colReverse, columnReverse, reverse,
     flexWrap, wrap, nowrap, wrapReverse,
@@ -60,11 +67,8 @@ export const Flex = forwardRef(<T, P extends WithStyle>(props: FlexProps<P>, ref
 
   return createElement(StyledElement, {
     ...otherProps as StyledElementProps<P>,
+    as,
     ref,
     injectedStyle,
   })
 })
-
-Flex.defaultProps = {
-  as: 'div',
-}

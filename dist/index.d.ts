@@ -71,18 +71,24 @@ interface WithStyle {
 }
 type As<P extends WithStyle> = string | FunctionComponent<P> | ComponentClass<P>;
 
+declare module 'react' {
+    function forwardRef<T, P = {}>(render: (props: P, ref: React.Ref<T>) => React.ReactNode | null): (props: P & React.RefAttributes<T>) => React.ReactNode | null;
+}
 type FlexProps<P extends WithStyle> = Omit<React.PropsWithChildren<P & ContainerProps & ItemProps>, 'as'> & {
     as?: As<P>;
 };
-declare const Flex: React.ForwardRefExoticComponent<Omit<React.PropsWithChildren<WithStyle & ContainerProps & ItemProps>, "as"> & {
-    as?: As<WithStyle>;
-} & React.RefAttributes<unknown>>;
+declare const Flex: <T, P extends WithStyle>(props: Omit<React.PropsWithChildren<P & ContainerProps & ItemProps>, "as"> & {
+    as?: As<P>;
+} & React.RefAttributes<T>) => React.ReactNode;
 
+declare module "react" {
+    function forwardRef<T, P = {}>(render: (props: P, ref: React.Ref<T>) => React.ReactNode | null): (props: P & React.RefAttributes<T>) => React.ReactNode | null;
+}
 type FlexItemProps<P extends WithStyle> = Omit<React.PropsWithChildren<P & ItemProps>, 'as'> & {
     as?: As<P>;
 };
-declare const FlexItem: React.ForwardRefExoticComponent<Omit<React.PropsWithChildren<WithStyle & ItemProps>, "as"> & {
-    as?: As<WithStyle>;
-} & React.RefAttributes<unknown>>;
+declare const FlexItem: <T, P extends WithStyle>(props: Omit<React.PropsWithChildren<P & ItemProps>, "as"> & {
+    as?: As<P>;
+} & React.RefAttributes<T>) => React.ReactNode | null;
 
 export { type As, type ContainerProps, Flex, FlexItem, type FlexItemProps, type FlexProps, type ItemProps, type WithStyle };
