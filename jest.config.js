@@ -5,4 +5,3 @@ module.exports = {
   setupFiles: ['<rootDir>/tests/tests.setup.js'],
   testMatch: ['**/?(*.)+(test).ts'],
 };
-
