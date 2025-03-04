@@ -1,23 +1,23 @@
-import React, { ComponentClass, createElement, CSSProperties, FunctionComponent } from 'react'
+import React, { ComponentClass, createElement, CSSProperties, ForwardedRef, forwardRef, FunctionComponent } from 'react'
 
 export interface WithStyle {
   style?: CSSProperties
 }
 
-export type As<P extends WithStyle> = string | FunctionComponent<P> | ComponentClass<P>
+export type As<CustomProps extends WithStyle = WithStyle> = string | FunctionComponent<CustomProps> | ComponentClass<CustomProps>
 
-export interface StyledElementAsProps<P extends WithStyle> {
-  as: As<P>
+export interface StyledElementAsProps<CustomProps extends WithStyle> {
+  as: As<CustomProps>
   injectedStyle: CSSProperties
 }
 
-export type StyledElementProps<P extends WithStyle> = React.PropsWithChildren<P & StyledElementAsProps<P>>
+type StyledElementInnerProps<CustomProps extends WithStyle> = React.PropsWithChildren<CustomProps & StyledElementAsProps<CustomProps>>
 
 
-export const StyledElement = <P extends WithStyle>(props: StyledElementProps<P>) => {
+const StyledElementInner = <DomElement extends HTMLElement, CustomProps extends WithStyle>(props: StyledElementInnerProps<CustomProps>, ref: ForwardedRef<DomElement>) => {
   const { as: AsElement, injectedStyle, ...otherProps } = props
 
-  const asProps = otherProps as P
+  const asProps = otherProps as CustomProps
 
   const style = {
     ...asProps?.style,
@@ -26,6 +26,13 @@ export const StyledElement = <P extends WithStyle>(props: StyledElementProps<P>)
 
   return createElement(AsElement, {
     ...asProps,
+    ref,
     style,
   })
 }
+
+export type StyledElementProps<DomElement extends HTMLElement, CustomProps extends WithStyle> = StyledElementInnerProps<CustomProps> & { ref?: ForwardedRef<DomElement> }
+
+export const StyledElement = forwardRef(StyledElementInner) as <DomElement extends HTMLElement, CustomProps extends WithStyle>(
+  props: StyledElementProps<DomElement, CustomProps>,
+) => ReturnType<typeof StyledElementInner>

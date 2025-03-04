@@ -1,4 +1,6 @@
-import React, { CSSProperties, FunctionComponent, ComponentClass } from 'react';
+import * as React$1 from 'react';
+import React__default, { CSSProperties, FunctionComponent, ComponentClass, ForwardedRef, PropsWithChildren } from 'react';
+import { Diff } from 'utility-types';
 import { Property } from 'csstype';
 
 interface ContainerProps {
@@ -69,31 +71,33 @@ interface ItemProps {
 interface WithStyle {
     style?: CSSProperties;
 }
-type As<P extends WithStyle> = string | FunctionComponent<P> | ComponentClass<P>;
-interface StyledElementAsProps<P extends WithStyle> {
-    as: As<P>;
+type As<CustomProps extends WithStyle = WithStyle> = string | FunctionComponent<CustomProps> | ComponentClass<CustomProps>;
+interface StyledElementAsProps<CustomProps extends WithStyle> {
+    as: As<CustomProps>;
     injectedStyle: CSSProperties;
 }
-type StyledElementProps<P extends WithStyle> = React.PropsWithChildren<P & StyledElementAsProps<P>>;
-
-type FlexProps<P extends WithStyle> = Omit<React.PropsWithChildren<P & ContainerProps & ItemProps>, 'as'> & {
-    as?: As<P>;
+type StyledElementInnerProps<CustomProps extends WithStyle> = React__default.PropsWithChildren<CustomProps & StyledElementAsProps<CustomProps>>;
+type StyledElementProps<DomElement extends HTMLElement, CustomProps extends WithStyle> = StyledElementInnerProps<CustomProps> & {
+    ref?: ForwardedRef<DomElement>;
 };
-declare const FlexInner: <T, P extends WithStyle>(props: FlexProps<P>, ref: React.ForwardedRef<T>) => React.FunctionComponentElement<StyledElementProps<WithStyle>>;
-declare const Flex: <T extends HTMLElement, P extends WithStyle>(props: Omit<React.PropsWithChildren<P & ContainerProps & ItemProps>, "as"> & {
-    as?: As<P>;
-} & {
-    ref?: React.ForwardedRef<T>;
-}) => ReturnType<typeof FlexInner>;
 
-type FlexItemProps<P extends WithStyle> = Omit<React.PropsWithChildren<P & ItemProps>, 'as'> & {
-    as?: As<P>;
+type FlexBaseProps = ContainerProps & ItemProps;
+type FlexInnerProps<CustomProps extends WithStyle> = Omit<PropsWithChildren<FlexBaseProps & Diff<CustomProps, FlexBaseProps>>, 'as'> & {
+    as?: As<CustomProps>;
 };
-declare const FlexItemInner: <T, P extends WithStyle>(props: FlexItemProps<P>, ref: React.ForwardedRef<T>) => React.FunctionComponentElement<StyledElementProps<WithStyle>>;
-declare const FlexItem: <T extends HTMLElement, P extends WithStyle>(props: Omit<React.PropsWithChildren<P & ItemProps>, "as"> & {
-    as?: As<P>;
-} & {
-    ref?: React.ForwardedRef<T>;
-}) => ReturnType<typeof FlexItemInner>;
+declare const FlexInner: <DomElement extends HTMLElement, CustomProps extends WithStyle>(props: FlexInnerProps<CustomProps>, ref: ForwardedRef<DomElement>) => React$1.FunctionComponentElement<StyledElementProps<HTMLElement, WithStyle>>;
+type FlexProps<DomElement extends HTMLElement, CustomProps extends WithStyle> = FlexInnerProps<CustomProps> & {
+    ref?: React.ForwardedRef<DomElement>;
+};
+declare const Flex: <DomElement extends HTMLElement, CustomProps extends WithStyle>(props: FlexProps<DomElement, CustomProps>) => ReturnType<typeof FlexInner>;
+
+type FlexItemInnerProps<CustomProps extends WithStyle> = Omit<React__default.PropsWithChildren<CustomProps & ItemProps>, 'as'> & {
+    as?: As<CustomProps>;
+};
+declare const FlexItemInner: <DomElement extends HTMLElement, CustomProps extends WithStyle>(props: FlexItemInnerProps<CustomProps>, ref: React__default.ForwardedRef<DomElement>) => React__default.FunctionComponentElement<StyledElementProps<HTMLElement, WithStyle>>;
+type FlexItemProps<DomElement extends HTMLElement, CustomProps extends WithStyle> = FlexItemInnerProps<CustomProps> & {
+    ref?: React__default.ForwardedRef<DomElement>;
+};
+declare const FlexItem: <DomElement extends HTMLElement, CustomProps extends WithStyle>(props: FlexItemProps<DomElement, CustomProps>) => ReturnType<typeof FlexItemInner>;
 
 export { type As, type ContainerProps, Flex, FlexItem, type FlexItemProps, type FlexProps, type ItemProps, type WithStyle };

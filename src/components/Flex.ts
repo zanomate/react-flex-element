@@ -1,4 +1,5 @@
-import React, { createElement, CSSProperties, ForwardedRef, forwardRef } from 'react'
+import { createElement, CSSProperties, ForwardedRef, forwardRef, PropsWithChildren } from 'react'
+import { Diff } from 'utility-types'
 import { alignContentProperty } from '../properties/alignContentProperty'
 import { alignItemsProperty } from '../properties/alignItemsProperty'
 import { alignSelfProperty } from '../properties/alignSelfProperty'
@@ -17,11 +18,13 @@ import { ContainerProps } from '../types/ContainerProps'
 import { ItemProps } from '../types/ItemProps'
 import { As, StyledElement, StyledElementProps, WithStyle } from './StyledElement'
 
-export type FlexProps<P extends WithStyle> = Omit<React.PropsWithChildren<P & ContainerProps & ItemProps>, 'as'> & {
-  as?: As<P>
+type FlexBaseProps = ContainerProps & ItemProps
+
+type FlexInnerProps<CustomProps extends WithStyle> = Omit<PropsWithChildren<FlexBaseProps & Diff<CustomProps, FlexBaseProps>>, 'as'> & {
+  as?: As<CustomProps>
 }
 
-const FlexInner = <T, P extends WithStyle>(props: FlexProps<P>, ref: ForwardedRef<T>) => {
+const FlexInner = <DomElement extends HTMLElement, CustomProps extends WithStyle>(props: FlexInnerProps<CustomProps>, ref: ForwardedRef<DomElement>) => {
   const {
     as = 'div',
     display, inline,
@@ -60,13 +63,15 @@ const FlexInner = <T, P extends WithStyle>(props: FlexProps<P>, ref: ForwardedRe
   }
 
   return createElement(StyledElement, {
-    ...otherProps as StyledElementProps<P>,
+    ...otherProps as StyledElementProps<DomElement, CustomProps>,
     as,
     ref,
     injectedStyle,
   })
 }
 
-export const Flex = forwardRef(FlexInner) as <T extends HTMLElement, P extends WithStyle>(
-  props: FlexProps<P> & { ref?: React.ForwardedRef<T> },
+export type FlexProps<DomElement extends HTMLElement, CustomProps extends WithStyle> = FlexInnerProps<CustomProps> & { ref?: React.ForwardedRef<DomElement> }
+
+export const Flex = forwardRef(FlexInner) as <DomElement extends HTMLElement, CustomProps extends WithStyle>(
+  props: FlexProps<DomElement, CustomProps>,
 ) => ReturnType<typeof FlexInner>

@@ -1301,7 +1301,7 @@ var require_react_development = __commonJS({
           }
           return lazyType;
         }
-        function forwardRef3(render) {
+        function forwardRef4(render) {
           {
             if (render != null && render.$$typeof === REACT_MEMO_TYPE) {
               error("forwardRef requires a render function but received a `memo` component. Instead of forwardRef(memo(...)), use memo(forwardRef(...)).");
@@ -2198,7 +2198,7 @@ var require_react_development = __commonJS({
         exports2.createElement = createElement$1;
         exports2.createFactory = createFactory;
         exports2.createRef = createRef;
-        exports2.forwardRef = forwardRef3;
+        exports2.forwardRef = forwardRef4;
         exports2.isValidElement = isValidElement;
         exports2.lazy = lazy;
         exports2.memo = memo;
@@ -2467,14 +2467,16 @@ var widthProperty = (fill, defaultValue) => {
 
 // src/components/StyledElement.ts
 var import_react = __toESM(require_react());
-var StyledElement = (props) => {
+var StyledElementInner = (props, ref) => {
   const _a = props, { as: AsElement, injectedStyle } = _a, otherProps = __objRest(_a, ["as", "injectedStyle"]);
   const asProps = otherProps;
   const style = __spreadValues(__spreadValues({}, asProps == null ? void 0 : asProps.style), injectedStyle);
   return (0, import_react.createElement)(AsElement, __spreadProps(__spreadValues({}, asProps), {
+    ref,
     style
   }));
 };
+var StyledElement = (0, import_react.forwardRef)(StyledElementInner);
 
 // src/components/Flex.ts
 var FlexInner = (props, ref) => {

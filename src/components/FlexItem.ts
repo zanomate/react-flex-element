@@ -9,11 +9,11 @@ import { widthProperty } from '../properties/widthProperty'
 import { ItemProps } from '../types/ItemProps'
 import { As, StyledElement, StyledElementProps, WithStyle } from './StyledElement'
 
-export type FlexItemProps<P extends WithStyle> = Omit<React.PropsWithChildren<P & ItemProps>, 'as'> & {
-  as?: As<P>
+type FlexItemInnerProps<CustomProps extends WithStyle> = Omit<React.PropsWithChildren<CustomProps & ItemProps>, 'as'> & {
+  as?: As<CustomProps>
 }
 
-const FlexItemInner = <T, P extends WithStyle>(props: FlexItemProps<P>, ref: ForwardedRef<T>) => {
+const FlexItemInner = <DomElement extends HTMLElement, CustomProps extends WithStyle>(props: FlexItemInnerProps<CustomProps>, ref: ForwardedRef<DomElement>) => {
   const {
     as = 'div',
     order,
@@ -36,13 +36,15 @@ const FlexItemInner = <T, P extends WithStyle>(props: FlexItemProps<P>, ref: For
   }
 
   return createElement(StyledElement, {
-    ...otherProps as StyledElementProps<P>,
+    ...otherProps as StyledElementProps<DomElement, CustomProps>,
     as,
     ref,
     injectedStyle,
   })
 }
 
-export const FlexItem = forwardRef(FlexItemInner) as <T extends HTMLElement, P extends WithStyle>(
-  props: FlexItemProps<P> & { ref?: React.ForwardedRef<T> },
+export type FlexItemProps<DomElement extends HTMLElement, CustomProps extends WithStyle> = FlexItemInnerProps<CustomProps> & { ref?: React.ForwardedRef<DomElement> }
+
+export const FlexItem = forwardRef(FlexItemInner) as <DomElement extends HTMLElement, CustomProps extends WithStyle>(
+  props: FlexItemProps<DomElement, CustomProps>,
 ) => ReturnType<typeof FlexItemInner>
